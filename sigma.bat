@@ -17070,7 +17070,6 @@ Del C:\Windows.old.000\Users\ %username%\Local Settings\FortniteGame\Saved\LMS\M
 @ ECHO.
 @ ECHO.
 @echo off
-echo Release and Renew DHCP
 @ ECHO.
 @echo off
 : Disable Static IP/Enable DHCP    Remove DNS     Enable NICs
@@ -17082,37 +17081,30 @@ netsh interface set interface name="%%j" admin=enabled
 @ ECHO.
 @ ECHO.
 @ ECHO.
-echo Flush DNS: 
 @echo off
 ipconfig /flushdns 
 @ ECHO.
 @ ECHO.
 @ ECHO.
-echo Clear ARP/Route table:
 @echo off
 netsh interface ip delete arpcache
 @ ECHO.
 @ ECHO.
 @ ECHO.
-echo Clear SSL state:
 @echo off
 certutil -URLCache * delete 
 @ ECHO.
 @ ECHO.
 @ ECHO.
-echo Reset TCP/IP:
 @echo off
 netsh int ip reset 
 netsh int ipv4 reset 
 netsh int ipv6 reset 
-
 @ ECHO.
 @ ECHO.
-echo Clear Winsock:
 @echo off
 netsh winsock reset 
 @ ECHO.
-
 echo Reset Firewall Settings
 @echo off 
 netsh advfirewall reset 
